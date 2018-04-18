@@ -9,6 +9,9 @@ setup(
     author_email='falk.ben@gmail.com',
     include_package_data=False,
     packages=[
+        'bibtex_print',
+    ],
+    install_requires=[
         'bibtexparser==1.0.1',
     ],
 )
