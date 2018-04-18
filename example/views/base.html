@@ -1,0 +1,7 @@
+{% set PUBS = 'content/pubs/pubs.bib'|load_bibtex %}
+
+{% for item in PUBS %}
+    {{item|print_authors}}
+    <a href="{{item|print_link}}" target="_blank">{{item|print_title|render|safe}}</a>.
+    In <i>{{item|print_venue}}</i>, {{item|print_issue_data}}{{item.year}}.
+{% endfor %}
