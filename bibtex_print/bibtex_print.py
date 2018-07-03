@@ -1,5 +1,7 @@
-from jinja2.ext import Extension
+import re
+
 import bibtexparser
+from jinja2.ext import Extension
 
 
 def load_bibtex(bibfile):
@@ -61,6 +63,12 @@ def print_title(bib_entry):
 
     if title[0] == '{' and title[-1] == '}':
         title = title[1:-1]
+
+    if '\href' in title:
+        m = re.findall(r"\\href\{(.+)\}{(.+)}", title)
+        link = m[0][0]
+        t = m[0][1]
+        title = "<a href={}>{}</a>".format(link, t)
 
     return title
 
