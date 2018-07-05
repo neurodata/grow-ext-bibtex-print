@@ -1,13 +1,16 @@
 import re
 
 import bibtexparser
+from bibtexparser.bparser import BibTexParser
 from jinja2.ext import Extension
 
 
 def load_bibtex(bibfile):
+    parser = BibTexParser()
+    parser.ignore_nonstandard_types = False
 
     with open(bibfile) as bibtex_file:
-        bib_database = bibtexparser.load(bibtex_file)
+        bib_database = bibtexparser.load(bibtex_file, parser)
 
     bib_entries = bib_database.entries
     bib_entries.sort(key=lambda x: x['author'])
@@ -47,6 +50,13 @@ def print_link(bib_entry):
         return 'https://doi.org/' + bib_entry['doi']
     if 'url' in bib_entry:
         return bib_entry['url']
+    if 'arxivid' in bib_entry:
+        arxivID = bib_entry['arxivid'].replace('arXiv:', '')
+        return 'https://arxiv.org/abs/{}'.format(arxivID)
+    print('{} did not have a link'.format(bib_entry['ID']))
+    # print('here are the keys')
+    # for key in bib_entry:
+    #     print(key)
 
 
 def print_venue(bib_entry):
