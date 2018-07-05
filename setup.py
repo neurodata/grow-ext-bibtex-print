@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='grow-ext-bibtex-print',
-    version='0.0.3',
+    version='0.0.4',
     license='MIT',
     author='Ben Falk',
     author_email='falk.ben@gmail.com',

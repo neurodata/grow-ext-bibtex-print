@@ -26,6 +26,8 @@ def print_authors(bib_entry):
     for author in authors:
         names = author.split(', ')
         last = names[0]
+        if last[0] == '{' and last[-1] == '}':
+            last = last[1:-1]
         initials = []
         if len(names) > 1:
             for n in names[1].split(' '):
