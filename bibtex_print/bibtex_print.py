@@ -13,8 +13,8 @@ def load_bibtex(bibfile):
         bib_database = bibtexparser.load(bibtex_file, parser)
 
     bib_entries = bib_database.entries
-    bib_entries.sort(key=lambda x: x['author'])
-    bib_entries.sort(key=lambda x: x['year'], reverse=True)
+    bib_entries.sort(key=lambda x: x.get('author', ''))
+    bib_entries.sort(key=lambda x: x.get('year', ''), reverse=True)
 
     return bib_entries
 
