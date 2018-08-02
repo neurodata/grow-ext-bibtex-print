@@ -44,7 +44,7 @@ def print_authors(bib_entry):
     elif len(auths_format) == 1:
         return auths_format[0] + '.'
     else:
-        return '{} and {}.'.format(', '.join(auths_format[0:-1]), auths_format[-1])
+        return u'{} and {}.'.format(', '.join(auths_format[0:-1]), auths_format[-1])
 
 
 def print_link(bib_entry):
