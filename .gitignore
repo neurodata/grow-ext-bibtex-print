@@ -1,3 +1,4 @@
 example/.podcache
 example/build/
 example/extensions/
+.vscode/settings.json
