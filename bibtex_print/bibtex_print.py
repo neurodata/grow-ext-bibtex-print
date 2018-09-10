@@ -1,7 +1,9 @@
 import re
+from datetime import datetime
 
 import bibtexparser
 from bibtexparser.bparser import BibTexParser
+from jinja2 import nodes
 from jinja2.ext import Extension
 
 
@@ -106,6 +108,10 @@ def print_issue(bib_entry):
     return '({})'.format(bib_entry['number'])
 
 
+def print_current_year(_):
+    return datetime.now().year
+
+
 class BIBTEX_PRINT(Extension):
 
     def __init__(self, environment):
@@ -116,3 +122,4 @@ class BIBTEX_PRINT(Extension):
         environment.filters['print_title'] = print_title
         environment.filters['print_venue'] = print_venue
         environment.filters['print_issue_data'] = print_issue_data
+        environment.filters['print_current_year'] = print_current_year
