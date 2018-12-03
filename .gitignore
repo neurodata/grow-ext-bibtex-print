@@ -4,3 +4,4 @@ example/extensions/
 .vscode
 *.ipynb*
 env
+*.pyc

@@ -10,7 +10,7 @@ import pandas as pd
 def load_bibtex_by_month(bibfile):
     
     MONTH_CONVERT = {'jan': 1, 'Jan': 1, 'January': 1, 'feb': 2, 'Feb': 2, 'February': 2, 'mar': 3, 'Mar': 3, 'March': 3, 'apr': 4, 'Apr': 4, 'April': 4, 'may': 5, 'May': 5, 'june': 6, 'June': 6, 'jul': 7, 'july': 7, 'July': 7, 
-       'aug': 8, 'Aug': 8, 'August': 8, 'sep': 9, 'Sep': 9, 'september': 9, 'September': 9, 'oct': 10, 'Oct': 10, 'october': 10, 'October': 10, 'nov': 11, 'Nov': 11, 'November': 11}
+       'aug': 8, 'Aug': 8, 'August': 8, 'sep': 9, 'Sep': 9, 'september': 9, 'September': 9, 'oct': 10, 'Oct': 10, 'october': 10, 'October': 10, 'nov': 11, 'Nov': 11, 'November': 11, 'dec': 12, 'Dec': 12, 'December': 12}
     
     parser = BibTexParser()
     parser.ignore_nonstandard_types = False
