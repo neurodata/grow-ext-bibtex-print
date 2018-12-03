@@ -2,3 +2,5 @@ example/.podcache
 example/build/
 example/extensions/
 .vscode
+*.ipynb*
+env
