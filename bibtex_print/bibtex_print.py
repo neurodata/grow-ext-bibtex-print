@@ -5,12 +5,13 @@ import bibtexparser
 from bibtexparser.bparser import BibTexParser
 from jinja2 import nodes
 from jinja2.ext import Extension
-import pandas as pd
 
 def load_bibtex_by_month(bibfile):
-    
-    MONTH_CONVERT = {'jan': 1, 'Jan': 1, 'January': 1, 'feb': 2, 'Feb': 2, 'February': 2, 'mar': 3, 'Mar': 3, 'March': 3, 'apr': 4, 'Apr': 4, 'April': 4, 'may': 5, 'May': 5, 'june': 6, 'June': 6, 'jul': 7, 'july': 7, 'July': 7, 
-       'aug': 8, 'Aug': 8, 'August': 8, 'sep': 9, 'Sep': 9, 'september': 9, 'September': 9, 'oct': 10, 'Oct': 10, 'october': 10, 'October': 10, 'nov': 11, 'Nov': 11, 'November': 11, 'dec': 12, 'Dec': 12, 'December': 12}
+    def mo_co(mo):
+        MONTH_CONVERT = {'': 0, 'jan': 1, 'Jan': 1, 'January': 1, 'feb': 2, 'Feb': 2, 'February': 2, 'mar': 3, 'Mar': 3, 'March': 3, 'apr': 4, 'Apr': 4, 'April': 4, 'may': 5, 'May': 5, 'june': 6, 'June': 6, 'jul': 7, 'july': 7, 'July': 7, 
+                         'aug': 8, 'Aug': 8, 'August': 8, 'sep': 9, 'Sep': 9, 'september': 9, 'September': 9, 'oct': 10, 'Oct': 10, 'october': 10, 'October': 10, 'nov': 11, 'Nov': 11, 'November': 11, 'dec': 12, 'Dec': 12, 'December': 12}
+
+        return MONTH_CONVERT[mo]
     
     parser = BibTexParser()
     parser.ignore_nonstandard_types = False
@@ -18,12 +19,12 @@ def load_bibtex_by_month(bibfile):
     with open(bibfile) as bibtex_file:
         bib_database = bibtexparser.load(bibtex_file, parser)
 
-    bib_entries = pd.DataFrame(bib_database.entries)
-    bib_entries['mo_num'] = bib_entries.loc[:, 'month'].map(mon, na_action='ignore').fillna(0).astype(int)  # Make a new column in DataFrame containing the month number
-    bib_entries.sort_values(by=['year', 'mo_num'], ascending=False, inplace=True)
+    bib_entries = bib_database.entries
     
-    
-    return bib_entries.to_dict(orient='records')
+    bib_entries.sort(key=lambda x: mo_co(x.get('month', '')), reverse=True)
+    bib_entries.sort(key=lambda x: x.get('year', ''), reverse=True)
+
+    return bib_entries
 
 def load_bibtex(bibfile):
     parser = BibTexParser()
