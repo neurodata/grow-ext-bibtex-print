@@ -5,4 +5,4 @@ example/extensions/
 *.ipynb*
 env
 *.pyc
-*.pyc
+*.bib

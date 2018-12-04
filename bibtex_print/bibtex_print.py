@@ -9,8 +9,8 @@ from jinja2.ext import Extension
 
 def load_bibtex(bibfile):
     def mo_co(mo):
-        MONTH_CONVERT = {'': 0, 'jan': 1, 'Jan': 1, 'January': 1, 'feb': 2, 'Feb': 2, 'February': 2, 'mar': 3, 'Mar': 3, 'March': 3, 'apr': 4, 'Apr': 4, 'April': 4, 'may': 5, 'May': 5, 'june': 6, 'June': 6, 'jul': 7, 'july': 7, 'July': 7,
-                         'aug': 8, 'Aug': 8, 'August': 8, 'sep': 9, 'Sep': 9, 'september': 9, 'September': 9, 'oct': 10, 'Oct': 10, 'october': 10, 'October': 10, 'nov': 11, 'Nov': 11, 'November': 11, 'dec': 12, 'Dec': 12, 'December': 12}
+        MONTH_CONVERT = {'': 0, 'jan': 1, 'Jan': 1, 'january': 1, 'January': 1, 'feb': 2, 'Feb': 2, 'february': 2, 'February': 2, 'mar': 3, 'Mar': 3, 'march': 3, 'March': 3, 'apr': 4, 'Apr': 4, 'april': 4, 'April': 4, 'may': 5, 'May': 5, 'jun': 6, 'June': 6, 'june': 6, 'June': 6, 'jul': 7, 'Jul': 7, 'july': 7, 'July': 7,
+                         'aug': 8, 'Aug': 8, 'august': 8, 'August': 8, 'sep': 9, 'Sep': 9, 'september': 9, 'September': 9, 'oct': 10, 'Oct': 10, 'october': 10, 'October': 10, 'nov': 11, 'Nov': 11, 'november': 11, 'November': 11, 'dec': 12, 'Dec': 12, 'december': 12, 'December': 12}
 
         return MONTH_CONVERT[mo]
 
