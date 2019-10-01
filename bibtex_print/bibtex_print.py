@@ -188,7 +188,7 @@ class BIBTEX_PRINT(Extension):
     def __init__(self, environment):
         super(BIBTEX_PRINT, self).__init__(environment)
         environment.filters["load_bibtex"] = load_bibtex
-        environment.filters["auth_formatted"] = auth_formatted
+        environment.filters["all_authors"] = all_authors
         environment.filters["print_authors"] = print_authors
         environment.filters["print_link"] = print_link
         environment.filters["print_title"] = print_title
