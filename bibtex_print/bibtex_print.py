@@ -3,7 +3,6 @@ from datetime import datetime
 
 import bibtexparser
 from bibtexparser.bparser import BibTexParser
-from jinja2 import nodes
 from jinja2.ext import Extension
 
 
@@ -76,8 +75,10 @@ def load_bibtex(bibfile):
     return bib_entries
 
 
-def print_authors(bib_entry):
-    authors = bib_entry["author"].split(" and ")
+def auth_formatted(authors):
+    """format the authors in intials. last name
+    e.g. J. V. Vogelstein
+    """
 
     auths_format = []
     for author in authors:
@@ -94,6 +95,22 @@ def print_authors(bib_entry):
                     initials += n + ". "
         full_name_format = "".join(initials) + last
         auths_format.append(full_name_format)
+
+    return auths_format
+
+
+def all_authors(bib_entry):
+    authors = bib_entry["author"].split(" and ")
+
+    auths_format = auth_formatted(authors)
+
+    return auths_format
+
+
+def print_authors(bib_entry):
+    authors = bib_entry["author"].split(" and ")
+
+    auths_format = auth_formatted(authors)
 
     # return et al if # of auths_format > 3
     if len(auths_format) > 3:
@@ -171,6 +188,7 @@ class BIBTEX_PRINT(Extension):
     def __init__(self, environment):
         super(BIBTEX_PRINT, self).__init__(environment)
         environment.filters["load_bibtex"] = load_bibtex
+        environment.filters["auth_formatted"] = auth_formatted
         environment.filters["print_authors"] = print_authors
         environment.filters["print_link"] = print_link
         environment.filters["print_title"] = print_title
