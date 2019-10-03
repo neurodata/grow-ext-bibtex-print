@@ -10,7 +10,7 @@ with open(path.join(here, "requirements.txt")) as f:
 
 setup(
     name="grow-ext-bibtex-print",
-    version="0.0.7",
+    version="0.0.8",
     license="MIT",
     author="Ben Falk",
     author_email="falk.ben@gmail.com",
