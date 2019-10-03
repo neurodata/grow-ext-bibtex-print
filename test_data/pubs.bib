@@ -1,0 +1,34 @@
+@article{Kutten2016,
+abstract = {The CLARITY method renders brains optically transparent to enable high-resolution imaging in the structurally intact brain. Anatomically annotating CLARITY brains is necessary for discovering which regions contain signals of interest. Manually annotating whole-brain, terabyte CLARITY images is difficult, time-consuming, subjective, and error-prone. Automatically registering CLARITY images to a pre-annotated brain atlas offers a solution, but is difficult for several reasons. Removal of the brain from the skull and subsequent storage and processing cause variable non-rigid deformations, thus compounding inter-subject anatomical variability. Additionally, the signal in CLARITY images arises from various biochemical contrast agents which only sparsely label brain structures. This sparse labeling challenges the most commonly used registration algorithms that need to match image histogram statistics to the more densely labeled histological brain atlases. The standard method is a multiscale Mutual Information B-spline algorithm that dynamically generates an average template as an intermediate registration target. We determined that this method performs poorly when registering CLARITY brains to the Allen Institute's Mouse Reference Atlas (ARA), because the image histogram statistics are poorly matched. Therefore, we developed a method (Mask-LDDMM) for registering CLARITY images, that automatically find the brain boundary and learns the optimal deformation between the brain and atlas masks. Using Mask-LDDMM without an average template provided better results than the standard approach when registering CLARITY brains to the ARA. The LDDMM pipelines developed here provide a fast automated way to anatomically annotate CLARITY images. Our code is available as open source software at http://NeuroData.io.},
+author = {Kutten, Kwame S. and Vogelstein, Joshua T. and Charon, Nicolas and Ye, Li and Deisseroth, Karl and Miller, Michael I.},
+doi = {10.1117/12.2227444},
+eprint = {1605.02060},
+isbn = {9781510601413},
+issn = {1996756X},
+journal = {Society of Photo-Optical Instrumentation Engineers Europe},
+title = {{Deformably Registering and Annotating Whole CLARITY Brains to an Atlas via Masked LDDMM}},
+url = {https://doi.org/10.1117/12.2227444},
+year = {2016}
+}
+
+@inproceedings{src2016,
+author={Vogelstein, Joshua T.},
+address={Kavli Neuroscience Discovery Institute & Center for Imaging Science},
+year={2016},
+title={\href{https://neurodata.io/talks/src.html}{Learning a Data-Driven Nosology:Progress, Challenges & Opportunities}}}
+
+
+@inproceedings{open2016,
+author={Vogelstein, Joshua T. and Miller, Michael I. and Hunganir, Richard},
+address={Kavli Neuroscience Discovery Institute \& Center for Imaging Science @ JHU},
+year={2016},
+title={\href{https://neurodata.io/talks/open.html}{Global Brain Workshop 2016}}}
+
+@inproceedings{GrayRoncal2015a,
+author = {{Gray Roncal}, William and Pekala, Michael and Kaynig-fittkau, Verena and Kleissas, Dean M and Vogelstein, Joshua T and Pfister, Hanspeter and Burns, Randal and Vogelstein, R Jacob and Chevillet, Mark A and Hager, Gregory D},
+booktitle = {British Machine Vision Conference},
+eprint = {1254329},
+primaryClass = {arXiv},
+title = {{\href{http://arxiv.org/abs/1403.3724}{VESICLE : Volumetric Evaluation of Synaptic Interfaces using Computer vision at Large Scale}}},
+year = {2015}
+}

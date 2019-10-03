@@ -5,7 +5,6 @@ example/extensions/
 *.ipynb*
 env
 *.pyc
-*.bib
 
 # Distribution / packaging
 .Python
@@ -25,3 +24,4 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.pytest_cache/

@@ -64,7 +64,7 @@ def load_bibtex(bibfile):
     parser.ignore_nonstandard_types = False
 
     with open(bibfile) as bibtex_file:
-        bib_database = bibtexparser.load(bibtex_file, parser)
+        bib_database = bibtexparser.load(bibtex_file, parser=parser)
 
     bib_entries = bib_database.entries
 
@@ -144,8 +144,17 @@ def print_venue(bib_entry):
         return bib_entry["booktitle"]
 
 
+def print_address(bib_entry):
+    if "address" in bib_entry:
+        address = bib_entry["address"]
+        address = address.replace("\\&", "&")
+        return address
+
+
 def print_title(bib_entry):
     title = bib_entry["title"]
+
+    title = title.replace("\\&", "&")
 
     if title[0] == "{" and title[-1] == "}":
         title = title[1:-1]
@@ -154,7 +163,7 @@ def print_title(bib_entry):
         m = re.findall(r"\\href\{(.+)\}{(.+)}", title)
         link = m[0][0]
         t = m[0][1]
-        title = "<a href={}>{}</a>".format(link, t)
+        title = '<a href="{}">{}</a>'.format(link, t)
 
     return title
 
@@ -193,5 +202,6 @@ class BIBTEX_PRINT(Extension):
         environment.filters["print_link"] = print_link
         environment.filters["print_title"] = print_title
         environment.filters["print_venue"] = print_venue
+        environment.filters["print_address"] = print_address
         environment.filters["print_issue_data"] = print_issue_data
         environment.filters["print_current_year"] = print_current_year
