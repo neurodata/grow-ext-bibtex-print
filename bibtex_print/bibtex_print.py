@@ -111,7 +111,7 @@ def all_authors_annotated(bib_entry):
     authors = bib_entry["author"].split(" and ")
     auths_format = auth_formatted(authors)
 
-    an_entries = bib_entry.get("authors+an", None)
+    an_entries = bib_entry.get("author+an", None)
 
     if an_entries is not None:
         an_entries_list = an_entries.split(";")
