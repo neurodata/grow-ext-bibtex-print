@@ -117,7 +117,7 @@ def all_authors_annotated(bib_entry):
         an_entries_list = an_entries.split(";")
         for an_entry in an_entries_list:
             an_parts = an_entry.split("=")
-            an_id = an_parts[0] - 1
+            an_id = int(an_parts[0]) - 1
             an_type = an_parts[1]
 
             cur_auth = auths_format[an_id]
