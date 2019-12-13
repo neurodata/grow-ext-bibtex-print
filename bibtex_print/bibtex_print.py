@@ -107,6 +107,26 @@ def all_authors(bib_entry):
     return auths_format
 
 
+def all_authors_annotated(bib_entry):
+    authors = bib_entry["author"].split(" and ")
+    auths_format = auth_formatted(authors)
+
+    an_entries = bib_entry.get("authors+an", None)
+
+    if an_entries is not None:
+        an_entries_list = an_entries.split(";")
+        for an_entry in an_entries_list:
+            an_parts = an_entry.split("=")
+            an_id = an_parts[0] - 1
+            an_type = an_parts[1]
+
+            cur_auth = auths_format[an_id]
+            if an_type == "highlight":
+                auths_format[an_id] = '<span class="font-bold">' + cur_auth + '</span>'
+
+    return auths_format
+
+
 def print_authors(bib_entry):
     authors = bib_entry["author"].split(" and ")
 
@@ -198,6 +218,7 @@ class BIBTEX_PRINT(Extension):
         super(BIBTEX_PRINT, self).__init__(environment)
         environment.filters["load_bibtex"] = load_bibtex
         environment.filters["all_authors"] = all_authors
+        environment.filters["all_authors_annotated"] = all_authors_annotated
         environment.filters["print_authors"] = print_authors
         environment.filters["print_link"] = print_link
         environment.filters["print_title"] = print_title
