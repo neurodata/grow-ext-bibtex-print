@@ -123,6 +123,8 @@ def all_authors_annotated(bib_entry):
             cur_auth = auths_format[an_id]
             if an_type == "highlight":
                 auths_format[an_id] = '<span class="font-bold">' + cur_auth + '</span>'
+            elif an_type == "trainee":
+                auths_format[an_id] = '<span class="italic">' + cur_auth + '</span>'
 
     return auths_format
 
