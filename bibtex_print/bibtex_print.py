@@ -72,7 +72,10 @@ def mo_co(mo):
     try:
         return(int(mo))
     except:
-        return MONTH_CONVERT[mo]
+        try:
+            return MONTH_CONVERT[mo]
+        except:
+            return(0)
 
 
 def load_bibtex(bibfile):
